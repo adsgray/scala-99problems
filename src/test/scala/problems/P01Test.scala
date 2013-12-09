@@ -45,5 +45,31 @@ class P01Test extends WordSpec with Matchers {
     
   }
   
+  "kth" should {
+    "return kth in with a normal list" in {
+      val l = List(1,2,3,4,5)
+      P03.kth(0, l) shouldEqual 1
+      P03.kth(1, l) shouldEqual 2
+      P03.kth(2, l) shouldEqual 3
+    }
+    
+    "return 0th in a list of 1 element" in {
+      val l = List(42)
+      P03.kth(0, l) shouldEqual 42
+    }
+    
+    "throw an exception when k is bigger than list" in {
+      val l = List(1,2)
+      an [Exception] should be thrownBy P03.kth(3, l)
+    }
+    
+    "throw an exception on an empty list" in {
+      val l = List()
+      an [Exception] should be thrownBy P03.kth(0, l)
+      an [Exception] should be thrownBy P03.kth(3, l)
+    }
+    
+  }
+  
   
 }
