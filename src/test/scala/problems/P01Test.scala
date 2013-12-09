@@ -46,11 +46,14 @@ class P01Test extends WordSpec with Matchers {
   }
   
   "kth" should {
+
+    import P03._
+
     "return kth in with a normal list" in {
       val l = List(1,2,3,4,5)
-      P03.kth(0, l) shouldEqual 1
-      P03.kth(1, l) shouldEqual 2
-      P03.kth(2, l) shouldEqual 3
+      kth(0, l) shouldEqual 1
+      kth(1, l) shouldEqual 2
+      kth(2, l) shouldEqual 3
     }
     
     "return 0th in a list of 1 element" in {
