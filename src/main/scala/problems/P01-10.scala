@@ -184,12 +184,12 @@ res0: List[List[Symbol]] = List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), Li
  */
 
 object P09 {
-  def pack(l:List[_]):List[_] = {
+  def pack(l:List[_]):List[List[_]] = {
     
     // In this case enumerating the different cases is made ugly
     // by the checks on sublistacc. Those checks are necessary
     // otherwise List() is included in the results.
-    def packHelper(l:List[_], acc:List[_], sublistacc:List[_], curelement: Any):List[_] = {
+    def packHelper(l:List[_], acc:List[List[_]], sublistacc:List[_], curelement: Any):List[List[_]] = {
       l match {
         case Nil if (!sublistacc.isEmpty) => acc :+ sublistacc
         case Nil => acc 
@@ -201,4 +201,27 @@ object P09 {
     
     packHelper(l, List(), List(), Nil)
   }
+}
+
+/*
+ * Run-length encoding of a list.
+Use the result of problem P09 to implement the so-called run-length encoding data compression method. Consecutive duplicates of elements are encoded as tuples (N, E) where N is the number of duplicates of the element E.
+Example:
+
+scala> encode(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+res0: List[(Int, Symbol)] = List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e))
+ * 
+ */
+
+object P10 {
+  import P04._
+  import P09._
+
+  def encode(l:List[_]):List[(Int,_)] = {
+    // cheating by using map
+    pack(l) map {
+      l => Pair(listLength(l), l.head)
+    }
+  }
+  
 }

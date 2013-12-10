@@ -219,4 +219,22 @@ class P01Test extends WordSpec with Matchers {
     
   }
   
+  "encode" should {
+    import P10._
+    
+    "return correct for easy case" in {
+      val l = List(1)
+      val expected = List(Pair(1, 1))
+      
+      encode(l) shouldEqual expected
+    }
+    
+    "return correct for harder case" in {
+      val l = List(1,2,2,3,3,3,4,4,4,4)
+      val expected = List((1 -> 1), (2 -> 2), (3 -> 3), (4 -> 4))
+
+      encode(l) shouldEqual expected
+    }
+  }
+  
 }
