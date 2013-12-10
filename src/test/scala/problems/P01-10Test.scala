@@ -147,6 +147,35 @@ class P01Test extends WordSpec with Matchers {
       isPalindrome(l2) shouldEqual false
     }
   }
+
+  "flattenList" should {
+    import P07._
+
+    "return Nil when passed Nil?" in {
+      val l = Nil
+      flattenList(l) shouldEqual Nil
+    }
+
+    "return the list if it's already flat" in {
+      val l = List(1,2,3,4,5)
+      flattenList(l) shouldEqual l
+    }
+
+    "flatten one level" in {
+      val l = List(List(1,2))
+      flattenList(l) shouldEqual List(1,2)
+    }
+    
+    "flatten one level with single elements in between" in {
+      val l = List(List(1,2), 3, List(4,5,6))
+      flattenList(l) shouldEqual List(1,2,3,4,5,6)
+    }
+    
+    "flatten two levels" in {
+      val l = List(List(List(1,2), List(3,4)), 5, List(6,7))
+      flattenList(l) shouldEqual List(1,2,3,4,5,6,7)
+    }
+  }
   
   
 }

@@ -124,3 +124,23 @@ object P06 {
   }
 
 }
+
+/*
+ * Flatten a nested list structure.
+ * Example:
+ * scala> flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+ * res0: List[Any] = List(1, 1, 2, 3, 5, 8)
+ */
+
+object P07 {
+
+  // In the end I had to write this very "declaratively" to finally get it.
+  // Basically enumerate each case?
+  def flattenList[_](l:List[_]):List[_] = {
+    l match {
+      case Nil => Nil
+      case (l:List[_]) :: rest => flattenList(l) ::: flattenList(rest)
+      case x :: rest => x +: flattenList(rest)
+    }
+  }
+}
