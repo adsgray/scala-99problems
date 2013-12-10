@@ -197,5 +197,26 @@ class P01Test extends WordSpec with Matchers {
     
   }
   
+  "pack" should {
+    import P09._
+    
+    "return Nil when passed Nil? not sure. " in {
+      val l = Nil
+      pack(l) shouldEqual Nil
+    }
+    
+    "return the same list if no dupes" in {
+      val l = List(1,2,3,4,5)
+      val expected = l map { e => List(e) }
+      pack(l) shouldEqual expected
+    }
+    
+    "pack things in this list" in {
+      val l = List(1,2,2,3,3,3)
+      val expected = List(List(1), List(2,2), List(3,3,3))
+      pack(l) shouldEqual expected
+    }
+    
+  }
   
 }

@@ -172,3 +172,33 @@ object P08 {
   }
   
 }
+
+/*
+ * Pack consecutive duplicates of list elements into sublists.
+If a list contains repeated elements they should be placed in separate sublists.
+Example:
+
+scala> pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+res0: List[List[Symbol]] = List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e))
+ * 
+ */
+
+object P09 {
+  def pack(l:List[_]):List[_] = {
+    
+    // In this case enumerating the different cases is made ugly
+    // by the checks on sublistacc. Those checks are necessary
+    // otherwise List() is included in the results.
+    def packHelper(l:List[_], acc:List[_], sublistacc:List[_], curelement: Any):List[_] = {
+      l match {
+        case Nil if (!sublistacc.isEmpty) => acc :+ sublistacc
+        case Nil => acc 
+        case x :: xs if (x == curelement) => packHelper(xs, acc, sublistacc :+ x, curelement)
+        case x :: xs if (!sublistacc.isEmpty )=> packHelper(xs, acc :+ sublistacc, List(x), x)
+        case x :: xs => packHelper(xs, acc, List(x), x)
+      }
+    }
+    
+    packHelper(l, List(), List(), Nil)
+  }
+}
