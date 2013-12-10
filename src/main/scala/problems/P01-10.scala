@@ -1,5 +1,6 @@
 package problems
 
+
 /*
  * Find the last element of a list.
 Example:
@@ -143,4 +144,31 @@ object P07 {
       case x :: rest => x +: flattenList(rest)
     }
   }
+}
+
+
+/*
+ * Eliminate consecutive duplicates of list elements.
+If a list contains repeated elements they should be replaced with a single copy of the element. The order of the elements should not be changed.
+Example:
+
+scala> compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+res0: List[Symbol] = List('a, 'b, 'c, 'a, 'd, 'e)
+ */
+
+object P08 {
+
+  def compress(l:List[_]):List[_] = {
+    
+    def compressHelper(l:List[_], acc: List[_], curelement: Any):List[_] = {
+      l match {
+        case Nil => acc
+        case x :: xs if (x == curelement) => compressHelper(xs, acc, curelement)
+        case x :: xs => compressHelper(xs, acc :+ x, x)
+      }
+    }
+    
+    compressHelper(l, List(), Nil)
+  }
+  
 }

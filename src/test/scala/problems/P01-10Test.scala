@@ -177,5 +177,25 @@ class P01Test extends WordSpec with Matchers {
     }
   }
   
+  "compress" should {
+    import P08._
+    
+    "return Nil when passed Nil?" in {
+      val l = Nil
+      compress(l) shouldEqual Nil
+    }
+    
+    "return the same list if it has no duplicate elements" in {
+      val l = List(1,2,3,4,5)
+      compress(l) shouldEqual l
+    }
+    
+    "compress things in this list" in {
+      val l = List(1,2,2,2,3,3,4,5,6,6,6,7,7,8,9,9)
+      compress(l) shouldEqual List(1,2,3,4,5,6,7,8,9)
+    }
+    
+  }
+  
   
 }
