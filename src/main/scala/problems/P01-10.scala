@@ -103,3 +103,24 @@ object P05 {
     revHelper(List[T](), l)
   }
 }
+
+/*
+ * Find out whether a list is a palindrome.
+ * Example:
+ * scala> isPalindrome(List(1, 2, 3, 2, 1))
+ * res0: Boolean = true
+ */
+
+object P06 {
+
+  import P04._
+
+  def isPalindrome[T](l:List[T]):Boolean = {
+    l match {
+      case Nil => true
+      case a :: Nil => true
+      case a +: middleList :+ b => a == b && isPalindrome(middleList)
+    }
+  }
+
+}

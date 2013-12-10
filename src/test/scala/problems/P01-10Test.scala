@@ -112,6 +112,41 @@ class P01Test extends WordSpec with Matchers {
       reverseList(l) shouldEqual List(4,3,2,1)
     }
   }
+
+  "isPalindrome" should {
+    import P06._
+
+    "return true for empty list" in {
+      val l = List()
+      isPalindrome(l) shouldEqual true
+    }
+
+    "return true for singleton list" in {
+      val l = List(42)
+      isPalindrome(l) shouldEqual true
+    }
+
+    "return true for doublet list" in {
+      val l = List(42,42)
+      isPalindrome(l) shouldEqual true
+    }
+
+    "return true for some palindrome lists" in {
+      val l1 = List(1,2,3,3,2,1)
+      isPalindrome(l1) shouldEqual true
+
+      val l2 = List(1,2,3,2,1)
+      isPalindrome(l2) shouldEqual true
+    }
+
+    "return false for some non-palindrome lists" in {
+      val l1 = List(1,2)
+      isPalindrome(l1) shouldEqual false
+
+      val l2 = List(1,2,3,3,1)
+      isPalindrome(l2) shouldEqual false
+    }
+  }
   
   
 }
