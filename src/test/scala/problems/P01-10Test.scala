@@ -73,6 +73,26 @@ class P01Test extends WordSpec with Matchers {
     }
     
   }
+
+
+  "length" should {
+    import P04._
+
+    "return 0 for the empty list" in {
+      val l = List()
+      listLength(l) shouldEqual 0
+    }
+
+    "return 1 for a single element list" in {
+      val l = List(42)
+      listLength(l) shouldEqual 1
+    }
+
+    "work on bigger lists" in {
+      val l = List(1,2,3,4,5)
+      listLength(l) shouldEqual 5
+    }
+  }
   
   
 }

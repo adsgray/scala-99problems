@@ -65,3 +65,21 @@ object P03 {
     kthHelper(l, 0)
   }
 }
+
+/*
+ * Find the number of elements of a list.
+ * Example:
+ * scala> length(List(1, 1, 2, 3, 5, 8))
+ * res0: Int = 6
+ *
+ */
+
+object P04 {
+  def listLength[T](l:List[T]):Int = {
+
+    l match {
+      case Nil => 0
+      case _ :: rest => 1 + listLength(rest)
+    }
+  }
+}
