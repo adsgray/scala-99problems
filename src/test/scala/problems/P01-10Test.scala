@@ -93,6 +93,25 @@ class P01Test extends WordSpec with Matchers {
       listLength(l) shouldEqual 5
     }
   }
+
+  "reverseList" should {
+    import P05._
+
+    "return empty list when given empty list" in {
+      val l = List[Int]()
+      reverseList(l) shouldEqual List[Int]()
+    }
+
+    "return the list when given a unit list" in {
+      val l = List(42)
+      reverseList(l) shouldEqual l
+    }
+
+    "reverse a general list" in {
+      val l = List(1,2,3,4)
+      reverseList(l) shouldEqual List(4,3,2,1)
+    }
+  }
   
   
 }

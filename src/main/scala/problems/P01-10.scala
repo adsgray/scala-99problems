@@ -83,3 +83,23 @@ object P04 {
     }
   }
 }
+
+/*
+ * Example:
+ * scala> reverse(List(1, 1, 2, 3, 5, 8))
+ * res0: List[Int] = List(8, 5, 3, 2, 1, 1)
+ */
+
+object P05 {
+  def reverseList[T](l:List[T]):List[T] = {
+
+    def revHelper(acc: List[T], remaining:List[T]):List[T] = {
+      remaining match {
+        case Nil => acc
+        case h :: rest => revHelper(h +: acc, rest) 
+      }
+    }
+
+    revHelper(List[T](), l)
+  }
+}
