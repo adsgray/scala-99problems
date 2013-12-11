@@ -121,6 +121,17 @@ object P14 {
  * res0: List[Symbol] = List('a, 'a, 'a, 'b, 'b, 'b, 'c, 'c, 'c, 'c, 'c, 'c, 'd, 'd, 'd)
  */
 object P15 {
+  
+  def duplicateN[T](n:Int, l:List[T]):List[T] = {
+    def makeListN(n:Int, item:T):List[T] = {
+      n match {
+        case 0 => Nil
+        case _ => item :: makeListN(n - 1, item)
+      }
+    }
+
+    l flatMap { x => makeListN(n, x) }
+  }
 }
 
 
