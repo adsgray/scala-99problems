@@ -174,7 +174,31 @@ class P11to20Test extends WordSpec with Matchers {
       slice(0, l.length, l) shouldEqual l
       
     }
+  }
+  
+  "rotate" should {
+    import P19._
     
+    /*
+     * 
+ * scala> rotate(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+ * res0: List[Symbol] = List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b, 'c)
+ *
+ * scala> rotate(-2, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+ * res1: List[Symbol] = List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i)
+    
+     */
+    
+    val l = List(1,2,3,4,5,6,7,8,9,10)
+
+    "work in case 1" in {
+      rotate(3, l) shouldEqual List(4,5,6,7,8,9,10,1,2,3)
+    }
+    
+    "work in case 2 (negative rotate)" in {
+      rotate(-2, l) shouldEqual List(9,10,1,2,3,4,5,6,7,8)
+      
+    }
   }
 
 }

@@ -213,6 +213,16 @@ object P18 {
  * res1: List[Symbol] = List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i)
  */
 object P19 {
+  import P05._ // reverseList
+  import P17._ // split
+
+  // hahaha it made sense to me when I wrote it.
+  def rotate[T](n:Int, l:List[T]):List[T] = {
+    if (n < 0) reverseList(rotate(n.abs, reverseList(l))) else {
+      val (front,back) = split(n, l)
+      back ::: front
+    }
+  }
 }
 
 /*
