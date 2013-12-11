@@ -68,5 +68,20 @@ class P11to20Test extends WordSpec with Matchers {
     }
 
   }
+  
+  "duplicate" should {
+    import P14._
+    
+    "work on a single element list" in {
+      val l = List(42)
+      duplicate(l) shouldEqual List(42,42)
+    }
+    
+    "work on a larger list" in {
+      val l = List(1,2,3,4)
+      duplicate(l) shouldEqual List(1,1,2,2,3,3,4,4)
+    }
+    
+  }
 
 }

@@ -105,6 +105,11 @@ object P13 {
  * res0: List[Symbol] = List('a, 'a, 'b, 'b, 'c, 'c, 'c, 'c, 'd, 'd)
  */
 object P14 {
+  
+  // apparently we're allowed to use flatMap
+  def duplicate[T](l:List[T]):List[T] = {
+    l flatMap { x => List(x,x)}
+  }
 
 }
 
