@@ -187,6 +187,20 @@ object P17 {
  *  res0: List[Symbol] = List('d, 'e, 'f, 'g)
  */
 object P18 {
+  import P17._
+  
+  def slice[T](i:Int, k:Int, l:List[T]):List[T] = {
+    
+    def take(k:Int, l:List[T]):List[T] = {
+      k match {
+        case 0 => Nil
+        case _ => l.head :: take(k - 1, l.tail)
+      }
+    }
+
+    val (front, back) = split(i, l)
+    take(k - i, back)
+  }
 }
 
 /*

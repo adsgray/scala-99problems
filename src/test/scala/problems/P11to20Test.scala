@@ -155,5 +155,26 @@ class P11to20Test extends WordSpec with Matchers {
     }
     
   }
+  
+  "slice" should {
+    import P18._
+    
+    /*
+ *  scala> slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+ *  res0: List[Symbol] = List('d, 'e, 'f, 'g)
+     */
+    
+    val l = List(1,2,3,4,5,6,7,8,9,10)
+    
+    "work in case 1" in {
+      slice(3,7,l) shouldEqual List(4,5,6,7)
+    }
+    
+    "work to get the whole list" in {
+      slice(0, l.length, l) shouldEqual l
+      
+    }
+    
+  }
 
 }
