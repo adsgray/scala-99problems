@@ -142,6 +142,16 @@ object P15 {
  * res0: List[Symbol] = List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k)
  */
 object P16 {
+  def drop[T](n:Int, l:List[T]):List[T] = {
+    l.foldLeft((List[T](), 1)) {
+      case ((acc, num), elem) => {
+        if (num == n)
+          (acc, 1)
+        else
+          (acc :+ elem, num + 1)
+      }
+    }._1
+  }
 }
 
 /*

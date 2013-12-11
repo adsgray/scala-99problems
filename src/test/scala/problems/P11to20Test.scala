@@ -106,5 +106,31 @@ class P11to20Test extends WordSpec with Matchers {
       duplicateN(0,l) shouldEqual List()
     }
   }
+  
+  "drop" should {
+    import P16._
+    val l = List(1,2,3,4,5,6,7,8,9,10,11,12)
+
+    "work when n = 1 (empty list?)" in {
+      drop(1,l) shouldEqual List()
+    }
+    
+    "work when n = 2" in {
+      drop(2,l) shouldEqual List(1,3,5,7,9,11)
+    }
+    
+    "work when n = 3" in {
+      drop(3,l) shouldEqual List(1,2,4,5,7,8,10,11)
+    }
+    
+    "work when n = 4" in {
+      drop(4,l) shouldEqual List(1,2,3,5,6,7,9,10,11)
+    }
+    
+    "work when n does not evenly divide l.length" in {
+      val l2 = List(1,2,3,4,5)
+      drop(2,l2) shouldEqual List(1,3,5)
+    }
+  }
 
 }
