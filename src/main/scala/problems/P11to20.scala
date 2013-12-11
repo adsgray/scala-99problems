@@ -218,9 +218,14 @@ object P19 {
 
   // hahaha it made sense to me when I wrote it.
   def rotate[T](n:Int, l:List[T]):List[T] = {
-    if (n < 0) reverseList(rotate(n.abs, reverseList(l))) else {
+    if (n == 0) {
+      l
+    }
+    else if (n > 0) {
       val (front,back) = split(n, l)
       back ::: front
+    } else {
+      reverseList(rotate(n.abs, reverseList(l))) 
     }
   }
 }

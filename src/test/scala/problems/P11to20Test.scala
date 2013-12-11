@@ -199,6 +199,10 @@ class P11to20Test extends WordSpec with Matchers {
       rotate(-2, l) shouldEqual List(9,10,1,2,3,4,5,6,7,8)
       
     }
+    
+    "return list when n is 0" in {
+      rotate(0,l) shouldEqual l
+    }
   }
 
 }
