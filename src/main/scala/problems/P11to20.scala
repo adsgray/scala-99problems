@@ -163,6 +163,18 @@ object P16 {
  * res0: (List[Symbol], List[Symbol]) = (List('a, 'b, 'c),List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
  */
 object P17 {
+  // not sure how to do this with foldLeft
+  def split[T](n:Int, l:List[T]):Pair[List[T], List[T]] = {
+    def splitHelper(n: Int, acc:Pair[List[T], List[T]]):Pair[List[T], List[T]] = {
+      val (front, back) = acc
+      n match {
+        case 0 => acc
+        case _ => splitHelper(n - 1, Pair(front :+ back.head, back.tail))
+      }
+    }
+    
+    splitHelper(n, Pair(List(), l))
+  }
 }
 
 /*

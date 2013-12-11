@@ -132,5 +132,28 @@ class P11to20Test extends WordSpec with Matchers {
       drop(2,l2) shouldEqual List(1,3,5)
     }
   }
+  
+  "split" should {
+    import P17._
+    
+    val l = List(1,2,3,4,5,6,7,8,9,10)
+    
+    "work when n = 0" in {
+      split(0,l) shouldEqual Pair(List(), l)
+    }
+    
+    "work when n = 1" in {
+      split(1,l) shouldEqual Pair(List(1), List(2,3,4,5,6,7,8,9,10))
+    }
+    
+    "work when n = 5" in {
+      split(5,l) shouldEqual Pair(List(1,2,3,4,5), List(6,7,8,9,10))
+    }
+    
+    "work when n = l.length" in {
+      split(l.length, l) shouldEqual Pair(l, List())
+    }
+    
+  }
 
 }
