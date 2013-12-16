@@ -8,6 +8,12 @@ res0: List[Symbol] = List('a, 'new, 'b, 'c, 'd)
  * 
  */
 object P21 {
+  import P17._
+
+  def insertAt[T](t:T, n:Int, l:List[T]):List[T] = {
+    val (front,back) = split(n, l)
+    (front :+ t) ::: back
+  }
 }
 
 /*
