@@ -235,6 +235,7 @@ class P01Test extends WordSpec with Matchers {
 
       encode(l) shouldEqual expected
     }
+
   }
   
 }

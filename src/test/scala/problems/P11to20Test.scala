@@ -204,5 +204,29 @@ class P11to20Test extends WordSpec with Matchers {
       rotate(0,l) shouldEqual l
     }
   }
+  
+  "removeAt" should {
+    import P20._
+    val l = List(1,2,3,4,5,6,7,8,9,10)
+    
+    "work when n is 0" in {
+      removeAt(0, l) shouldEqual l.tail
+    }
+    
+    "work when n is l.length - 1" in {
+      removeAt(9, l) shouldEqual l.init
+    }
+
+    "work in normal case 1" in {
+      val r = removeAt(2, l)
+      r shouldEqual List(1,2,4,5,6,7,8,9,10)
+    }
+
+    "work in normal case 2" in {
+      val r = removeAt(6, l)
+      r shouldEqual List(1,2,3,4,5,6,8,9,10)
+    }
+    
+  }
 
 }

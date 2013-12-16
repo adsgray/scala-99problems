@@ -239,4 +239,12 @@ object P19 {
  * res0: (List[Symbol], Symbol) = (List('a, 'c, 'd),'b)
  */
 object P20 {
+  
+  import P17._
+
+  def removeAt[T](n:Int, l:List[T]):List[T] = {
+    val (front,back) = split(n, l)
+    // the element to be removed is back.head
+    front ::: back.tail
+  }
 }
