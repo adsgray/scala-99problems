@@ -22,6 +22,14 @@ class P21to30Test extends WordSpec with Matchers {
     "work in general case 1" in {
       insertAt(42,5,l) shouldEqual List(1,2,3,4,5,42,6,7,8,9,10)
     }
+  }
+  
+  "range" should {
+    import P22._
+    
+    "work in general case 1" in {
+      range(4,9) shouldEqual List(4,5,6,7,8,9)
+    }
     
   }
 

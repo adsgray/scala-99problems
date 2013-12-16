@@ -23,6 +23,14 @@ scala> range(4, 9)
 res0: List[Int] = List(4, 5, 6, 7, 8, 9)
  */
 object P22 {
+  
+  // "Recursion is the goto of functional programming." - Eric Meijer
+  def range(s:Int, e:Int):List[Int] = {
+    if (s == e)
+      s :: Nil
+    else
+      s :: range(s + 1, e)
+  }
 }
 
 /*
