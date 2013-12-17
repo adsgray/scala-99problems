@@ -40,6 +40,19 @@ scala> randomSelect(3, List('a, 'b, 'c, 'd, 'f, 'g, 'h))
 res0: List[Symbol] = List('e, 'd, 'a)
  */
 object P23 {
+  // for removeAt
+  import P20._
+  import scala.util.Random
+
+  def randomSelect[T](n:Int, l:List[T]):List[T] = {
+    n match {
+      case 0 => Nil
+      case n @ _ => {
+        val pos = Random.nextInt(l.length)
+        l(pos) :: randomSelect(n - 1, removeAt(pos, l))
+      }
+    }
+  }
 }
 
 

@@ -32,5 +32,29 @@ class P21to30Test extends WordSpec with Matchers {
     }
     
   }
+  
+  "randomSelect" should {
+    import P23._
+
+    val l = List(1,2,3,4,5,6,7,8,9,10)
+
+    "return nothing for n=0" in {
+      randomSelect(0, l) shouldEqual List()
+    }
+    
+    "return N things for N" in {
+      randomSelect(3,l).length shouldEqual 3
+      randomSelect(2,l).length shouldEqual 2
+      randomSelect(5,l).length shouldEqual 5
+      randomSelect(8,l).length shouldEqual 8
+    }
+    
+    "return l for N=l.length" in {
+      val rs = randomSelect(l.length, l)
+      rs.length shouldEqual l.length
+      rs.sorted shouldEqual l.sorted
+    }
+    
+  }
 
 }
