@@ -64,6 +64,13 @@ res0: List[Int] = List(23, 1, 17, 33, 21, 37)
  * 
  */
 object P24 {
+  import P22._
+  import P23._
+  
+  def lotto(n:Int, m:Int):List[Int] = {
+    val r = range(1,m)
+    randomSelect(n, r)
+  }
 }
 
 /*
