@@ -1,5 +1,7 @@
 package problems
 
+import scala.annotation.tailrec
+
 
 /*
  * Find the last element of a list.
@@ -94,6 +96,7 @@ object P04 {
 object P05 {
   def reverseList[T](l:List[T]):List[T] = {
 
+    @tailrec
     def revHelper(acc: List[T], remaining:List[T]):List[T] = {
       remaining match {
         case Nil => acc
