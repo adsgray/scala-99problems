@@ -103,6 +103,24 @@ res0: List[List[Symbol]] = List(List('a, 'b, 'c), List('a, 'b, 'd), List('a, 'b,
  *   
  */
 object P26 {
+  import P20._ // removeAt
+  import P22._ // range
+
+  def combinations[T](n:Int, l:List[T]):List[List[T]] = {
+    
+    if (l.isEmpty)
+      Nil
+    else
+      range(0, l.length - 1).foldLeft(List.empty[List[T]]) {
+        case (acc, idx) => 
+          for {
+            // for each partial list we've constructed so far
+            elem <- acc
+            restcombos <- combinations(n - 1, removeAt(idx, l))
+            // add the remaining to it?
+          } yield elem ::: restcombos
+      }
+  }
 }
 
 /*

@@ -56,5 +56,17 @@ class P21to30Test extends WordSpec with Matchers {
     }
     
   }
+  
+  "combinations" should {
+
+    import P26._
+
+    val l = List(1,2,3,4,5,6)
+
+    "do some stuff" in {
+      val combo = combinations(3, l) 
+      println(combo)
+    }
+  }
 
 }
